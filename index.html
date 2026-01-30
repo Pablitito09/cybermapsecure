@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>CipherMap v1.0</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-layout">
+        <div class="map-section">
+            <div id="grid-container"></div>
+        </div>
+
+        <div class="control-panel">
+            <div class="header">
+                <h2>CIPHER<span class="highlight">MAP</span></h2>
+                <div class="version">SECURE PROTOCOL V1.0</div>
+            </div>
+
+            <div class="status-box">
+                <p class="label">STATUS DO SISTEMA:</p>
+                <p id="status" class="status-text blink">AGUARDANDO INICIALIZAÇÃO...</p>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="generateGrid()" class="btn">
+                    <span class="icon">⚡</span> 1. GERAR REDE HOSTIL
+                </button>
+                <button onclick="calculateRoute()" class="btn btn-action">
+                    <span class="icon">🔒</span> 2. CALCULAR ROTA SEGURA
+                </button>
+            </div>
+            
+            <div class="legend">
+                <h3>LEGENDA TÁTICA</h3>
+                <div class="legend-item"><div class="box start-ex"></div> Terminal Origem (A)</div>
+                <div class="legend-item"><div class="box end-ex"></div> Terminal Destino (B)</div>
+                <div class="legend-item"><div class="box wall"></div> Firewall (Bloqueado)</div>
+                <div class="legend-item"><div class="box risk"></div> Nó Comprometido</div>
+                <div class="legend-item"><div class="box path"></div> Túnel Encriptado</div>
+            </div>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>

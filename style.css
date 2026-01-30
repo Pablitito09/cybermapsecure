@@ -1,0 +1,145 @@
+/* Reset e Fontes */
+body {
+    background-color: #050505;
+    color: #e0e0e0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Layout Principal */
+.main-layout {
+    display: flex;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* O Mapa */
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(20, 30px);
+    grid-template-rows: repeat(20, 30px);
+    gap: 2px;
+    background-color: #000;
+    border: 2px solid #333;
+    padding: 5px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #151515;
+    transition: all 0.3s ease;
+}
+
+/* Estilos Especiais */
+.wall {
+    background-color: #ff003c;
+    box-shadow: 0 0 10px #ff003c;
+    animation: pulseRisk 2s infinite;
+}
+
+.risk {
+    background-color: #ff9d00; /* Laranja */
+    opacity: 0.4;
+    border: 1px dashed #ff9d00;
+}
+
+.path {
+    background-color: #00ff41 !important; /* Verde Hacker */
+    box-shadow: 0 0 15px #00ff41;
+    transform: scale(1.1);
+    z-index: 50;
+    border-radius: 4px;
+}
+
+/* Terminais (Brancos) */
+.start-node, .end-node {
+    background-color: #ffffff !important;
+    box-shadow: 0 0 25px #ffffff;
+    z-index: 100;
+    transform: scale(1.2);
+    border: 2px solid #000;
+    animation: terminalPulse 1.5s infinite alternate;
+}
+
+/* Painel Lateral */
+.control-panel {
+    width: 320px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.highlight { color: #00ff41; }
+.version { font-size: 10px; color: #555; margin-bottom: 20px; }
+
+.status-box {
+    background: #111;
+    border-left: 4px solid #00ff41;
+    padding: 15px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.label { color: #555; font-size: 10px; margin: 0 0 5px 0; }
+.status-text { margin: 0; font-weight: bold; }
+
+/* Botões */
+.btn {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: transparent;
+    border: 1px solid #333;
+    color: #888;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    border-color: #fff;
+    color: #fff;
+    background: #111;
+}
+
+.btn-action {
+    border-color: #00ff41;
+    color: #00ff41;
+}
+
+.btn-action:hover {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+}
+
+/* Legenda Pequena */
+.legend { margin-top: auto; border-top: 1px solid #222; padding-top: 10px; }
+.legend h3 { font-size: 12px; color: #555; text-transform: uppercase; }
+.legend-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 12px; color: #aaa; }
+.box { width: 12px; height: 12px; margin-right: 10px; }
+.start-ex { background: white; box-shadow: 0 0 5px white; }
+.end-ex { background: white; box-shadow: 0 0 5px white; }
+
+/* Animações */
+@keyframes terminalPulse { from { box-shadow: 0 0 10px white; } to { box-shadow: 0 0 25px white; } }
+@keyframes pulseRisk { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
+.blink { animation: blinker 1s linear infinite; }
+@keyframes blinker { 50% { opacity: 0; } }
