@@ -1,35 +1,43 @@
-/* Reset e Fontes */
+/* --- CONFIGURAÇÕES GERAIS --- */
 body {
-    background-color: #050505;
+    background-color: #050505; /* Fundo quase preto */
     color: #e0e0e0;
-    font-family: 'Consolas', 'Courier New', monospace;
+    font-family: 'Consolas', 'Courier New', monospace; /* Fonte Hacker */
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; /* Impede barras de rolagem indesejadas */
 }
 
-/* Layout Principal */
+/* --- LAYOUT PRINCIPAL (A Janela da App) --- */
 .main-layout {
     display: flex;
     background: #0a0a0a;
     border: 1px solid #333;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9); /* Sombra pesada à volta */
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
+    max-width: 1200px;
 }
 
-/* O Mapa */
+/* --- ÁREA DO MAPA --- */
+.map-section {
+    border-right: 1px solid #222;
+    padding-right: 20px;
+}
+
 #grid-container {
     display: grid;
+    /* 20 colunas de 30px cada */
     grid-template-columns: repeat(20, 30px);
     grid-template-rows: repeat(20, 30px);
     gap: 2px;
     background-color: #000;
     border: 2px solid #333;
     padding: 5px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 }
 
 .cell {
@@ -37,90 +45,131 @@ body {
     height: 30px;
     background-color: #151515;
     transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
-/* Estilos Especiais */
+/* --- OBSTÁCULOS E ELEMENTOS DO MAPA --- */
+
+/* Paredes (Firewalls) */
 .wall {
-    background-color: #ff003c;
+    background-color: #ff003c; /* Vermelho Cyber */
     box-shadow: 0 0 10px #ff003c;
     animation: pulseRisk 2s infinite;
+    z-index: 10;
 }
 
+/* Zonas de Risco (Laranja) */
 .risk {
-    background-color: #ff9d00; /* Laranja */
-    opacity: 0.4;
+    background-color: transparent;
     border: 1px dashed #ff9d00;
+    box-shadow: inset 0 0 5px #ff9d00;
+    opacity: 0.6;
 }
 
+/* O Caminho (A Rota Segura) */
 .path {
-    background-color: #00ff41 !important; /* Verde Hacker */
+    background-color: #00ff41 !important; /* Verde Matrix */
     box-shadow: 0 0 15px #00ff41;
     transform: scale(1.1);
     z-index: 50;
     border-radius: 4px;
+    border: none;
 }
 
-/* Terminais (Brancos) */
+/* --- TERMINAIS (INÍCIO E FIM) --- */
 .start-node, .end-node {
-    background-color: #ffffff !important;
-    box-shadow: 0 0 25px #ffffff;
-    z-index: 100;
+    background-color: #ffffff !important; /* Branco Puro */
+    box-shadow: 0 0 20px #ffffff;         /* Brilho Intenso */
+    z-index: 100;                         /* Sempre no topo */
     transform: scale(1.2);
     border: 2px solid #000;
     animation: terminalPulse 1.5s infinite alternate;
 }
 
-/* Painel Lateral */
+/* --- PAINEL DE CONTROLO (DIREITA) --- */
 .control-panel {
-    width: 320px;
+    width: 340px;
     margin-left: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Empurra o rodapé para baixo */
 }
 
+/* Cabeçalho */
 .header h2 {
     margin: 0;
     font-size: 32px;
     letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.3);
 }
 
-.highlight { color: #00ff41; }
-.version { font-size: 10px; color: #555; margin-bottom: 20px; }
+.highlight { color: #00ff41; text-shadow: 0 0 10px #00ff41; }
 
+.version { 
+    font-size: 11px; 
+    color: #555; 
+    margin-bottom: 25px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Caixa de Status */
 .status-box {
     background: #111;
     border-left: 4px solid #00ff41;
     padding: 15px;
     margin-bottom: 30px;
     font-size: 14px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.label { color: #555; font-size: 10px; margin: 0 0 5px 0; }
-.status-text { margin: 0; font-weight: bold; }
+.label { 
+    color: #666; 
+    font-size: 10px; 
+    margin: 0 0 5px 0; 
+    text-transform: uppercase;
+}
+
+.status-text { 
+    margin: 0; 
+    font-weight: bold; 
+    color: #e0e0e0;
+}
 
 /* Botões */
+.buttons {
+    margin-bottom: 20px;
+}
+
 .btn {
     width: 100%;
     padding: 15px;
-    margin-bottom: 15px;
-    background: transparent;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.05);
     border: 1px solid #333;
-    color: #888;
+    color: #aaa;
     font-family: inherit;
+    font-size: 13px;
     cursor: pointer;
     text-align: left;
-    transition: 0.2s;
+    transition: all 0.2s ease;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .btn:hover {
     border-color: #fff;
     color: #fff;
-    background: #111;
+    background: #222;
+    transform: translateX(5px); /* Move ligeiramente para a direita */
 }
 
+.btn .icon { margin-right: 10px; }
+
+/* Botão de Ação (Calcular) */
 .btn-action {
-    border-color: #00ff41;
+    border-color: #004d1a;
     color: #00ff41;
 }
 
@@ -128,18 +177,84 @@ body {
     background: #00ff41;
     color: #000;
     box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    border-color: #00ff41;
 }
 
-/* Legenda Pequena */
-.legend { margin-top: auto; border-top: 1px solid #222; padding-top: 10px; }
-.legend h3 { font-size: 12px; color: #555; text-transform: uppercase; }
-.legend-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 12px; color: #aaa; }
-.box { width: 12px; height: 12px; margin-right: 10px; }
+/* Legenda */
+.legend { 
+    border-top: 1px solid #222; 
+    padding-top: 15px; 
+    margin-bottom: auto; /* Empurra o resto para baixo */
+}
+
+.legend h3 { 
+    font-size: 11px; 
+    color: #666; 
+    text-transform: uppercase; 
+    margin-top: 0;
+}
+
+.legend-item { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 8px; 
+    font-size: 12px; 
+    color: #999; 
+}
+
+.box { width: 12px; height: 12px; margin-right: 10px; border-radius: 2px; }
 .start-ex { background: white; box-shadow: 0 0 5px white; }
 .end-ex { background: white; box-shadow: 0 0 5px white; }
+.path-ex { background: #00ff41; box-shadow: 0 0 5px #00ff41; }
+.wall-ex { background: #ff003c; }
+.risk-ex { border: 1px dashed #ff9d00; opacity: 0.6; }
 
-/* Animações */
-@keyframes terminalPulse { from { box-shadow: 0 0 10px white; } to { box-shadow: 0 0 25px white; } }
-@keyframes pulseRisk { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
+/* --- RODAPÉ DOS AUTORES (NOVO) --- */
+.project-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+    text-align: center;
+    font-size: 10px;
+    color: #444;
+    font-family: 'Consolas', sans-serif;
+    letter-spacing: 0.5px;
+    cursor: default;
+}
+
+.project-footer p {
+    margin: 4px 0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.project-footer .authors {
+    color: #555;
+    font-weight: bold;
+}
+
+/* Efeito Hover no Rodapé */
+.project-footer:hover p {
+    color: #00ff41;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+.project-footer:hover .authors {
+    color: #ccffda;
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes terminalPulse { 
+    from { box-shadow: 0 0 10px #ffffff; transform: scale(1.1); } 
+    to { box-shadow: 0 0 25px #ffffff; transform: scale(1.25); } 
+}
+
+@keyframes pulseRisk { 
+    0% { opacity: 0.8; } 
+    50% { opacity: 1; box-shadow: 0 0 15px #ff003c; } 
+    100% { opacity: 0.8; } 
+}
+
 .blink { animation: blinker 1s linear infinite; }
-@keyframes blinker { 50% { opacity: 0; } }
+@keyframes blinker { 
+    50% { opacity: 0; } 
+}
