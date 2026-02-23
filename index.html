@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>CipherMap Pro v2.0 - Predictive AI</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-layout">
+        <div class="map-section">
+            <div id="grid-container"></div>
+        </div>
+
+        <div class="control-panel">
+            <div class="header">
+                <h2>CIPHER<span class="highlight">MAP</span></h2>
+                <div class="version">PREDICTIVE ML PROTOCOL V2.0</div>
+            </div>
+
+            <div class="status-box">
+                <p class="label">STATUS DO SISTEMA:</p>
+                <p id="status" class="status-text blink">AGUARDANDO INICIALIZAÇÃO...</p>
+            </div>
+            
+            <div class="buttons">
+                <div class="btn-group">
+                    <div class="btn-row">
+                        <button onclick="generateGrid()" class="btn" id="btn-generate">
+                            <span class="icon">⚡</span> 1. GERAR REDE HOSTIL
+                        </button>
+                        <button onclick="toggleInfo('info-1', this)" class="btn-toggle">▼</button>
+                    </div>
+                    <div id="info-1" class="info-panel">
+                        Gera um mapa aleatório com Firewalls e Vírus, assegurando 85% de chance de existir uma rota 100% segura até ao destino.
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <div class="btn-row">
+                        <button onclick="activatePredictiveML()" class="btn btn-action-ml" id="btn-ml" disabled>
+                            <span class="icon">🧠</span> 2. MODELO PREDITIVO (ML)
+                        </button>
+                        <button onclick="toggleInfo('info-2', this)" class="btn-toggle">▼</button>
+                    </div>
+                    <div id="info-2" class="info-panel">
+                        O algoritmo de ML analisa a rede e identifica nós limpos que estão rodeados por vírus, marcando-os como Ameaças Previstas (Roxo).
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <div class="btn-row">
+                        <button onclick="calculateRoute()" class="btn btn-action" id="btn-transmit" disabled>
+                            <span class="icon">🔒</span> 3. CALCULAR ROTA
+                        </button>
+                        <button onclick="toggleInfo('info-3', this)" class="btn-toggle">▼</button>
+                    </div>
+                    <div id="info-3" class="info-panel">
+                        O algoritmo A* calcula o percurso ótimo: prioriza o caminho verde, evita as ameaças (roxo) e contorna os vírus (laranja). <i>Fail-Operational</i>.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="legend">
+                <h3>LEGENDA TÁTICA</h3>
+                <div class="legend-item"><div class="box start-ex"></div> Origem / Destino</div>
+                <div class="legend-item"><div class="box wall-ex"></div> Firewall Inimiga</div>
+                <div class="legend-item"><div class="box risk-ex"></div> Nó Comprometido</div>
+                <div class="legend-item"><div class="box predicted-ex"></div> Ameaça Prevista (ML)</div>
+                <div class="legend-item"><div class="box path-ex"></div> Túnel Seguro</div>
+            </div>
+
+            <div class="project-footer">
+                <p>CipherMapSecure • ISTEC</p>
+                <p class="authors">Tomás Gaspar 2024164 • Daniel de Oliveira 2024143</p>
+            </div>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
